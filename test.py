@@ -5,6 +5,7 @@ class node:
         self.left = None
         self.right = None
 """
+##########################ATTEMPT ONE ------------- FAIL
 is_bst = 1
 def checkBST(root):
     global is_bst
@@ -48,5 +49,27 @@ def checkBST(root):
     if len(allVals) != len(set(allVals)):
         is_bst = 0
     return is_bst
+   
+####################################################################### ATTEMPT TWO - LOOKUP - PASS
+def checkBST(root):
     
+    def recurse(root, _mins, _maxs):
+
+        if root.data <= _mins:
+            return False
+           
+        if root.data >= _maxs:
+            return False
+            
+        left_ok = True
+        right_ok = True
+        
+        if root.left is not None:
+            left_ok = recurse(root.left, _mins, root.data)
+        if root.right is not None:
+            right_ok = recurse(root.right, root.data, _maxs)
+         
+        return left_ok and right_ok
+
+    return recurse(root, float('-inf'),float('inf'))
   
