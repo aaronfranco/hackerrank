@@ -1,6 +1,4 @@
-#!/bin/ruby
-=begin
-Test
+# Challenge
 Check out the resources on the page's right side to learn more about tries. The video tutorial is by Gayle Laakmann McDowell, author of the best-selling interview book Cracking the Coding Interview.
 We're going to make our own Contacts application! The application must perform two types of operations:
 
@@ -8,12 +6,12 @@ add name, where  is a string denoting a contact name. This must store  as a new 
 find partial, where  is a string denoting a partial name to search the application for. It must count the number of contacts starting with  and print the count on a new line.
 Given  sequential add and find operations, perform each operation in order.
 
-Input Format
+## Input Format
 
-The first line contains a single integer, , denoting the number of operations to perform. 
+The first line contains a single integer, , denoting the number of operations to perform.
 Each line  of the  subsequent lines contains an operation in one of the two forms defined above.
 
-Constraints
+## Constraints
 
 It is guaranteed that  and  contain lowercase English letters only.
 The input doesn't have any duplicate  for the  operation.
@@ -21,18 +19,20 @@ Output Format
 
 For each find partial operation, print the number of contact names starting with  on a new line.
 
-Sample Input
+## Sample Input
 
 4
 add hack
 add hackerrank
 find hac
 find hak
-Sample Output
+
+##Sample Output
 
 2
 0
-Explanation
+
+##Explanation
 
 We perform the following sequence of operations:
 
@@ -40,44 +40,3 @@ Add a contact named hack.
 Add a contact named hackerrank.
 Find and print the number of contact names beginning with hac. There are currently two contact names in the application and both of them start with hac, so we print  on a new line.
 Find and print the number of contact names beginning with hak. There are currently two contact names in the application but neither of them start with hak, so we print  on a new line.
-=end
-
-#Solution
-n = gets.strip.to_i
-$names = []
-$count = 0
-$occurs = {}
-def addName(data)
-    i = data.length
-    while i >= 0
-        if data[0...i] != ""
-            if $occurs[data[0...i]]
-                $occurs[data[0...i]] += 1
-            else
-                $occurs[data[0...i]] = 1
-            end
-        end
-        i -= 1
-    end
-end
-def checkString(data)
-   row = $names.join(' ')
-   $count = row.scan(/(?=#{data})/).count
-end
-for a0 in (0..n-1)
-    op,contact = gets.strip.split(' ')
-    case op
-        when "add"
-            addName(contact)
-        when "find"
-            checkString(contact)
-            if $occurs[contact]
-                puts $occurs[contact]
-            else
-                puts 0
-            end
-    else
-        puts "bad input"
-    end
-    
-end
