@@ -1,2 +1,2 @@
-# python-bst-proof
-A simple algorithm to check if a tree is BST
+# My Hackerrank Solutions
+A repo of all the algorithms and challenges I do on Hackerrank
