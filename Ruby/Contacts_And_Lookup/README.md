@@ -27,12 +27,12 @@ add hackerrank
 find hac
 find hak
 
-##Sample Output
+## Sample Output
 
 2
 0
 
-##Explanation
+## Explanation
 
 We perform the following sequence of operations:
 
